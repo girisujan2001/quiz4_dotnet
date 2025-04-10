@@ -5,6 +5,8 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+  - checkout: self
+
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
