@@ -1,0 +1,20 @@
+trigger:
+  - main
+
+pool:
+  name: Default  # or replace with your self-hosted agent pool name
+
+steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '7.x'
+
+  - script: dotnet build Quiz4App/Quiz4App.csproj --configuration Release
+    displayName: 'Build project'
+
+  - script: dotnet publish Quiz4App/Quiz4App.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
+    displayName: 'Publish artifact'
+
+  - publish: $(Build.ArtifactStagingDirectory)
+    artifact: drop
