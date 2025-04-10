@@ -14,6 +14,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
+        // Set the database-access confirmation message
+        ViewData["Message"] = "Database access has already been done on April 1, 2025 by Sujan Giri";
     }
 }
